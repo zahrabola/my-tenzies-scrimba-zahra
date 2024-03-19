@@ -58,11 +58,18 @@ function App() {
 
 
   function rollDice() {
-    setIsDice(oldDice => oldDice.map(die => {
+    if(!tenzies)
+    {
+      setIsDice(oldDice => oldDice.map(die => {
         return die.isHeld ? 
             die :
             generateNewDie()
     }))
+    } else {
+      setTenzies(false)
+      setIsDice(allNewDice())
+    }
+   
 }
 
   const diceElement = isDice.map((die) => (
